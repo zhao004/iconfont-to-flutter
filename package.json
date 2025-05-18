@@ -3,10 +3,12 @@
   "version": "1.0.0",
   "description": "A project that automatically unzips ZIP files, analyzes the contents, converts Python code to optimized JavaScript, and displays the results.",
   "type": "module",
+  "homepage": "https://github.com/zhao004/iconfont-to-flutter",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "jszip": "^3.10.1",
@@ -15,6 +17,7 @@
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^4.0.0",
+    "gh-pages": "^6.3.0",
     "vite": "^4.3.9"
   },
   "author": "Your Name",

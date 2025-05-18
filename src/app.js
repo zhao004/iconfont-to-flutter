@@ -65,7 +65,7 @@ const App = () => {
 
   return React.createElement('div', { className: 'app-container' },
     React.createElement('a', {
-      href: 'https://github.com/your-repo',
+      href: 'https://github.com/zhao004/iconfont-to-flutter',
       className: 'github-link',
       target: '_blank',
       rel: 'noopener noreferrer'

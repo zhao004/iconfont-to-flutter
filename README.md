@@ -31,11 +31,11 @@
 ## 安装与使用
 1. 克隆项目到本地：
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/zhao004/iconfont-to-flutter.git
    ```
 2. 进入项目目录：
    ```bash
-   cd py-to-js-converter
+   cd iconfont-to-flutter
    ```
 3. 安装依赖：
    ```bash

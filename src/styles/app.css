@@ -1,0 +1,293 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.app-container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f0f0f0;
+  padding: 40px 20px;
+  min-height: 100vh;
+}
+
+h1 {
+  color: #333;
+  margin-bottom: 32px;
+  font-size: 24px;
+  font-weight: normal;
+  text-align: center;
+}
+
+.drop-zone {
+  min-width: 300px;
+  min-height: 200px;
+  flex-shrink: 0;
+  border: 2px dashed #ccc;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  transition: border-color 0.3s ease;
+  cursor: pointer;
+  margin-bottom: 32px;
+}
+
+.drop-zone:hover {
+  transform: translateY(-5px);
+  border-color: #2196f3;
+  box-shadow: 0 12px 48px rgba(33, 150, 243, 0.2);
+}
+
+.drop-zone.dragging {
+  border-color: #2196f3;
+  background-color: rgba(33, 150, 243, 0.05);
+}
+
+.drop-zone h1 {
+  font-size: 22px;
+  color: #2196f3;
+  font-weight: bold;
+  margin-bottom: 18px;
+  margin-top: 0;
+}
+
+.icon {
+  font-size: 64px;
+  margin-bottom: 24px;
+  color: #8e9eab;
+  transition: all 0.3s ease;
+}
+
+.drop-zone:hover .icon {
+  color: #2196f3;
+  transform: scale(1.1);
+}
+
+.drop-zone p {
+  margin: 0;
+  text-align: center;
+  color: #333;
+  font-size: 16px;
+}
+
+.drop-zone .sub-text {
+  margin-top: 8px;
+  color: #666;
+  font-size: 14px;
+}
+
+.result-container {
+  width: 100%;
+  max-width: 800px;
+  margin: 40px 0;
+  flex-shrink: 0;
+  background: white;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* 代码块容器 */
+.code-block {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  background: #2d2d2d;
+  color: #d4d4d4;
+  padding: 24px 24px 24px 60px;
+  /* 减小左边距 */
+  border-radius: 8px;
+  font-family: 'JetBrains Mono', 'Fira Code', Consolas, monospace;
+  font-size: 14px;
+  line-height: 1.6;
+  margin: 0 0 18px 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  white-space: pre;
+  box-sizing: border-box;
+  height: auto;
+  max-height: 70vh;
+  overflow: auto;
+}
+
+/* 行号背景 */
+.code-block:before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 45px;
+  /* 减小宽度 */
+  /* background: #252525; */
+  /* border-right: 1px solid #404040; */
+  border-radius: 8px 0 0 8px;
+  z-index: 1;
+}
+
+/* 代码内容区域 */
+.code-block code {
+  display: block;
+  counter-reset: line;
+  /* 重置行号计数器 */
+}
+
+.code-block code>div {
+  counter-increment: line;
+  /* 每行递增计数器 */
+  position: relative;
+  padding-left: 40px;
+  /* 减小左内边距 */
+  min-height: 24px;
+}
+
+.code-block code>div:before {
+  content: counter(line);
+  /* 显示行号 */
+  position: absolute;
+  left: -50px;
+  /* 调整行号位置 */
+  width: 30px;
+  text-align: right;
+  color: #858585;
+  padding-right: 10px;
+  font-size: 12px;
+  user-select: none;
+}
+
+.copy-button {
+  background: #2196f3;
+  color: white;
+  border: none;
+  padding: 10px 22px;
+  border-radius: 6px;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.3s, box-shadow 0.3s;
+  box-shadow: 0 2px 8px rgba(33, 150, 243, 0.12);
+  margin-top: 16px;
+  position: sticky;
+  bottom: 0;
+  z-index: 10;
+}
+
+.copy-button:hover {
+  background: #1976d2;
+  box-shadow: 0 4px 16px rgba(33, 150, 243, 0.18);
+}
+
+.toast {
+  position: fixed;
+  top: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, #ff4b2b 0%, #ff416c 100%);
+  color: white;
+  padding: 14px 28px;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 500;
+  box-shadow: 0 8px 32px rgba(255, 75, 43, 0.2);
+  backdrop-filter: blur(8px);
+  z-index: 1000;
+  transition: all 0.3s ease;
+  opacity: 1;
+  animation: slideDown 0.3s ease;
+}
+
+.toast.success {
+  background: linear-gradient(135deg, #00b09b 0%, #96c93d 100%);
+}
+
+.toast.error {
+  background: linear-gradient(135deg, #ff416c 0%, #ff4b2b 100%);
+}
+
+/* Dart 语法高亮 */
+.dart-keyword {
+  color: #569cd6;
+  /* 关键字蓝色 */
+}
+
+.dart-class {
+  color: #4ec9b0;
+  /* 类名青绿色 */
+}
+
+.dart-type {
+  color: #4ec9b0;
+  /* 类型青绿色 */
+}
+
+.dart-string {
+  color: #ce9178;
+  /* 字符串橙色 */
+}
+
+.dart-comment {
+  color: #6a9955;
+  /* 注释绿色 */
+  font-style: italic;
+}
+
+.dart-property {
+  color: #9cdcfe;
+  /* 属性浅蓝色 */
+}
+
+.dart-number {
+  color: #b5cea8;
+  /* 数字淡绿色 */
+}
+
+.dart-package {
+  color: #ce9178;
+  /* 包名橙色 */
+}
+
+@keyframes slideUp {
+  from {
+    transform: translate(-50%, 100%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translate(-50%, 0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideDown {
+  from {
+    transform: translate(-50%, -100%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translate(-50%, 0);
+    opacity: 1;
+  }
+}
+
+.github-link {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 100;
+  opacity: 0.8;
+  transition: opacity 0.3s;
+}
+
+.github-link:hover {
+  opacity: 1;
+}

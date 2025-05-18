@@ -77,6 +77,13 @@
      ```bash
      npm run deploy
      ```
+   - **Vite 项目还需要修改 vite.config.js**
+      ```js
+      export default defineConfig({
+         base:'/iconfont-to-flutter/',
+         // 其他配置...
+      })
+      ```
 
 ## 贡献
 欢迎任何形式的贡献！请提交问题或拉取请求。

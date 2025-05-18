@@ -1,4 +1,6 @@
-# IconFont 代码生成器
+# IconFon to Flutter实体类
+
+![示例图](/assets/images/example.png)
 
 ## 项目简介
 该项目提供一个工具，可以将阿里巴巴图标库导出的 ZIP 文件转换为 Flutter IconFont 代码。用户可以通过拖放或点击上传 ZIP 文件，系统会自动解析其中的图标定义，并生成对应的 Dart 代码。
